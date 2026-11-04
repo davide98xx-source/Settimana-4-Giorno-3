@@ -1,0 +1,452 @@
+/* Portfolio Page — Settimana V, Giorno II
+   Refactoring con CSS positioning */
+
+/* Reset minimale */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #2b2b2b;
+  background-color: #fafafa;
+}
+
+/* Immagini fluide */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Header sticky */
+#site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: hsl(220, 40%, 20%);
+  background-image: url("img/header-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.8;
+  padding: 30px 16px 20px;
+  border-bottom: 4px solid hsl(45, 90%, 60%);
+}
+
+#site-header h1 {
+  font-size: clamp(1.8rem, 6vw, 3rem);
+  font-weight: bold;
+  font-style: italic;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 8px 0;
+}
+
+.tagline {
+  color: rgb(220, 220, 220);
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+/* Navigazione */
+#site-header nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  text-align: center;
+}
+
+#site-header nav li {
+  display: inline-block;
+}
+
+#site-header nav a {
+  display: inline-block;
+  color: hsl(45, 90%, 70%);
+  font-weight: bold;
+  padding: 8px 14px;
+  margin: 2px;
+  border-radius: 4px;
+  line-height: 1.6;
+  text-decoration: none;
+}
+
+#site-header nav a:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Contenuto principale */
+main {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+main section {
+  background-color: #ffffff;
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Titoli */
+h2 {
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  color: hsl(220, 60%, 30%);
+  text-align: left;
+  line-height: 1.4;
+  margin-top: 0;
+}
+
+main section h2::before {
+  content: "— ";
+  color: hsl(45, 90%, 50%);
+}
+
+h3 {
+  font-size: 1.15rem;
+  color: hsl(220, 30%, 25%);
+  text-align: left;
+  line-height: 1.6;
+}
+
+/* Avatar */
+.avatar {
+  display: block;
+  width: 110px;
+  height: 110px;
+  border: 4px solid hsl(45, 90%, 60%);
+  border-radius: 50%;
+  margin: 0 auto 16px;
+}
+
+#chi-sono {
+  text-align: left;
+}
+
+#chi-sono p:first-of-type {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: hsl(220, 30%, 25%);
+}
+
+/* Lista competenze */
+.skill-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  line-height: 2.2;
+}
+
+.skill-list button {
+  width: max-content;
+  min-width: 0;
+  max-width: 100%;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 4px 13px;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  border-radius: 12px;
+  background-color: blue;
+}
+
+.skill-list button:first-child {
+  font-weight: bold;
+}
+
+/* Tabella esperienze */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-wrapper table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+}
+
+.table-wrapper th,
+.table-wrapper td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+}
+
+.table-wrapper caption {
+  font-style: italic;
+  color: #666;
+  padding: 8px 0;
+}
+
+/* Progetti: le card sono affiancate come impostazione base */
+#progetti {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Titolo e introduzione occupano tutta la riga */
+#progetti > h2,
+#progetti > p {
+  flex: 0 0 100%;
+}
+
+/* Card progetto */
+.project {
+  position: relative;
+  box-sizing: border-box;
+  flex: 0 0 calc((100% - 12px) / 2);
+  min-width: 0;
+  padding: 12px;
+  border-radius: 4px;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+/* Badge NEW */
+.project:first-of-type::after {
+  content: "NEW";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 4px 12px;
+  background-color: hsl(0, 70%, 50%);
+  color: #ffffff;
+  border-radius: 0 4px 0 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+/* Form contatti */
+label {
+  font-weight: bold;
+  color: hsl(220, 60%, 25%);
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  background-color: #f5f7fb;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  background-color: #ffffff;
+  color: #000000;
+  outline: 2px solid hsl(220, 60%, 45%);
+}
+
+#consenso {
+  width: auto;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #999999;
+  font-style: italic;
+}
+
+/* Pulsanti generali */
+button {
+  width: 100%;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  color: #ffffff;
+  background-color: hsl(220, 60%, 30%);
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  color: hsl(45, 90%, 80%);
+  background-color: hsl(220, 60%, 45%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Footer */
+#site-footer {
+  background-color: hsl(220, 40%, 15%);
+  color: #ffffff;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 2;
+  padding: 20px 16px;
+}
+
+/* Bottone "Scrivimi" */
+.btn-primary {
+  width: auto;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  color: #ffffff;
+  background-color: hsl(220, 60%, 30%);
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+  background-color: hsl(220, 60%, 45%);
+}
+
+/* Back-to-top */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 50;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: hsl(220, 60%, 30%);
+  color: #ffffff;
+  text-align: center;
+  line-height: 48px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top:hover {
+  background-color: hsl(220, 60%, 45%);
+}
+
+/* Overlay del modal */
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.overlay[hidden] {
+  display: none;
+}
+
+/* Modal */
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 92%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.modal h2 {
+  margin-top: 0;
+}
+
+.modal .close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  border: none;
+  background: none;
+  color: #555;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal .close:hover {
+  color: #000000;
+}
+
+/* Layout tablet e desktop */
+@media (min-width: 768px) {
+  #site-header {
+    padding: 60px 20px 40px;
+    line-height: 2.4;
+  }
+
+  main {
+    padding: 40px 20px;
+  }
+
+  main section {
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+
+  .avatar {
+    float: left;
+    margin: 0 24px 12px 0;
+  }
+
+  #chi-sono {
+    text-align: justify;
+  }
+
+  #chi-sono p:first-of-type {
+    font-size: 1.15rem;
+  }
+
+  #chi-sono p:first-of-type::first-letter {
+    float: left;
+    margin-right: 6px;
+    color: hsl(220, 60%, 30%);
+    font-size: 3rem;
+    font-weight: bold;
+  }
+
+  #competenze {
+    clear: both;
+  }
+
+  input,
+  textarea,
+  select {
+    width: 60%;
+  }
+
+  button {
+    width: auto;
+    min-width: 30%;
+  }
+
+  #site-footer {
+    line-height: 2.4;
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 578px) {
+  .project {
+    flex-basis: 100%;
+  }
+}
